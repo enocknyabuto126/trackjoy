@@ -1,0 +1,117 @@
+<!-- Add Transaction Button -->
+<div class="fixed top-4 right-4 z-10">
+    <button id="addTransactionBtn" class="bg-primary-500 hover:bg-primary-600 text-white rounded-lg px-4 py-2 flex items-center justify-center shadow-lg transition-transform transform hover:scale-105 focus:outline-none">
+        <i class="fas fa-plus mr-2"></i>
+        Add Transaction
+    </button>
+</div>
+
+<div id="addTransactionModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-[90%] max-w-lg mx-auto my-8 max-h-[90vh] overflow-y-auto">
+        <div class="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 p-4 flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Add Transaction</h3>
+            <button id="closeTransactionModal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <form id="transactionForm">
+                <!-- Transaction Type -->
+                <div class="mb-3">
+                    <label class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Transaction Type</label>
+                    <div class="flex space-x-2">
+                        <button type="button" id="incomeBtn" class="flex-1 py-1.5 px-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg focus:outline-none active:bg-primary-100 active:text-primary-700 dark:active:bg-primary-900 dark:active:text-primary-300 transition-colors">
+                            <i class="fas fa-arrow-down mr-1 text-green-500"></i>Income
+                        </button>
+                        <button type="button" id="expenseBtn" class="flex-1 py-1.5 px-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg focus:outline-none active:bg-primary-100 active:text-primary-700 dark:active:bg-primary-900 dark:active:text-primary-300 transition-colors">
+                            <i class="fas fa-arrow-up mr-1 text-red-500"></i>Expense
+                        </button>
+                    </div>
+                    <input type="hidden" id="transactionType" name="type" value="income">
+                </div>
+                <!-- Amount -->
+                <div class="mb-3">
+                    <label for="amount" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Amount ($)</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <span class="text-gray-500 dark:text-gray-400">$</span>
+                        </div>
+                        <input type="number" id="amount" name="amount" class="w-full pl-8 pr-4 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-base" placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+                </div>
+                <!-- Description -->
+                <div class="mb-3">
+                    <label for="description" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Description</label>
+                    <input type="text" id="description" name="description" class="w-full px-4 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-base" placeholder="What is this transaction for?" required>
+                </div>
+                <!-- Category -->
+                <div class="mb-3">
+                    <label for="category" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Category</label>
+                    <select id="category" name="category" class="w-full px-4 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-base">
+                        <option value="" disabled selected>Select a category</option>
+                        <!-- Categories will be dynamically populated -->
+                    </select>
+                </div>
+                <!-- Date -->
+                <div class="mb-3">
+                    <label for="date" class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Date</label>
+                    <input type="date" id="date" name="date" class="w-full px-4 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-base" required>
+                </div>
+                <!-- Input Methods Tabs -->
+                <div class="mb-3">
+                    <div class="flex border-b border-gray-200 dark:border-gray-700">
+                        <button type="button" id="manualTab" class="py-1.5 px-3 text-primary-500 border-b-2 border-primary-500 dark:text-primary-400 dark:border-primary-400 font-medium text-sm">
+                            <i class="fas fa-keyboard mr-1"></i>Manual
+                        </button>
+                        <button type="button" id="voiceTab" class="py-1.5 px-3 text-gray-500 dark:text-gray-400 font-medium text-sm">
+                            <i class="fas fa-microphone mr-1"></i>Voice
+                        </button>
+                        <button type="button" id="photoTab" class="py-1.5 px-3 text-gray-500 dark:text-gray-400 font-medium text-sm">
+                            <i class="fas fa-camera mr-1"></i>Photo
+                        </button>
+                    </div>
+                    <!-- Manual Input (Default visible) -->
+                    <div id="manualInput" class="py-2">
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Fill in the form above with your transaction details.</p>
+                    </div>
+                    <!-- Voice Input (Initially hidden) -->
+                    <div id="voiceInput" class="py-2 hidden">
+                        <div class="flex flex-col items-center justify-center">
+                            <button type="button" id="startVoiceBtn" class="mb-2 bg-primary-500 hover:bg-primary-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md transition-colors">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <p id="voiceInstructions" class="text-xs text-gray-500 dark:text-gray-400 text-center">
+                                Press the microphone and say something like:<br>
+                                "Income of $150 from client payment in Sales category"
+                            </p>
+                            <p id="voiceOutput" class="mt-2 text-xs font-medium hidden"></p>
+                        </div>
+                    </div>
+                    <!-- Photo Input (Initially hidden) -->
+                    <div id="photoInput" class="py-2 hidden">
+                        <div class="flex flex-col items-center justify-center">
+                            <div id="photoPreviewContainer" class="mb-2 hidden">
+                                <img id="photoPreview" class="max-h-32 rounded-lg shadow-md" alt="Receipt preview">
+                            </div>
+                            <label for="photoUpload" class="cursor-pointer mb-2">
+                                <div class="bg-primary-500 hover:bg-primary-600 text-white rounded-full w-12 h-12 flex items-center justify-center shadow-md transition-colors">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <input type="file" id="photoUpload" accept="image/*" class="hidden">
+                            </label>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 text-center mb-1">
+                                Upload a photo of your receipt
+                            </p>
+                            <button type="button" id="analyzeReceiptBtn" class="px-3 py-1 bg-primary-500 hover:bg-primary-600 text-white rounded-lg shadow-md hidden text-sm">
+                                <i class="fas fa-search-dollar mr-1"></i>Analyze Receipt
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-primary-500 hover:bg-primary-600 text-white px-4 py-1.5 rounded-lg font-semibold shadow-md transition-colors text-sm">Add Transaction</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> 

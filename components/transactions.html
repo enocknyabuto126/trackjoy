@@ -1,0 +1,36 @@
+<section id="transactionsView" class="mb-8 hidden">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-5">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">All Transactions</h3>
+            <div class="flex space-x-2">
+                <button id="showDashboard" class="text-primary-500 hover:text-primary-600 text-sm font-medium">
+                    <i class="fas fa-arrow-left mr-1"></i> Back to Dashboard
+                </button>
+                <div class="relative">
+                    <input type="text" id="searchTransactions" placeholder="Search transactions..." 
+                        class="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-base">
+                    <div class="absolute left-3 top-2.5 text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Date</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Description</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Category</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Type</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="allTransactionsBody" class="divide-y divide-gray-200 dark:divide-gray-700">
+                    <!-- All transactions will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> 

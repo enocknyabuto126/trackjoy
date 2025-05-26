@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackJoy - Small Business Finance Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <!-- Fallback content -->
+    <div id="loading">Loading TrackJoy...</div>
+    
+    <div id="navbar"></div>
+    <main class="max-w-6xl mx-auto p-4 md:p-6">
+        <div id="dashboard"></div>
+        <div id="transactions"></div>
+        <div id="add-transaction"></div>
+    </main>
+    <div id="footer"></div>
+    
+    <script>
+        // Add error handling for component loading
+        window.addEventListener('error', function(e) {
+            console.error('Global error:', e.message);
+            document.getElementById('loading').innerHTML = 'Error loading application. Check console for details.';
+        });
+    </script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/input-handlers.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
