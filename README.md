@@ -47,7 +47,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 This project is open source and available under the [MIT License](LICENSE).
 
 ## Live Demo
-You can view a live demo of TrackJoy at [https://enocknyabuto126.github.io/trackjoy](https://enocknyabuto126.github.io/trackjoy).
+You can view a live demo of TrackJoy at (https://exquisite-shortbread-8bda16.netlify.app/).
 
 ---
 
